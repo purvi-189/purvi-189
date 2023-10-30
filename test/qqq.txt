@@ -1,0 +1,48 @@
+
+//    function claimMemberNft(string memory proposalFile ) public view {
+
+//     if(receivedMemberNFT[msg.sender] == false){
+//             if( memberProposals[msg.sender] >= 2  && memberVotes[msg.sender] >=5)  {
+//             { 
+//                 templateNFT.mintMemberNFT(msg.sender, proposalFile); 
+//                 receivedMemberNFT[msg.sender] = true ;
+//             }
+//        }
+//     }
+//    }
+
+//////
+
+
+ 
+    // function getAllTemplates() public view returns (Proposal[] memory) {
+    //     uint totalTemplates = 0;
+    //     Proposal[] memory allProposals = new Proposal[](totalTemplates);
+    //     uint j = 0; // Initialize j outside the loop
+
+    //     for (uint i = 0; i < proposalCount; i++) {
+    //         // Start from 1, not 0
+    //         Proposal storage proposal = proposals[i];
+    //         if (
+    //             keccak256(abi.encodePacked(proposal.category)) ==
+    //             keccak256(abi.encodePacked("template")) &&
+    //             state(i) == ProposalState.Succeeded
+    //         ) {
+    //             totalTemplates++;
+    //         }
+    //     }
+    //     // Store all succeeded proposals
+
+    //     for (uint i = 0; i < totalTemplates; i++) {
+    //         Proposal storage proposal = proposals[i];
+    //         if (
+    //             keccak256(abi.encodePacked(proposal.category)) ==
+    //             keccak256(abi.encodePacked("template")) &&
+    //             state(i) == ProposalState.Succeeded
+    //         ) {
+    //             allProposals[j] = proposal; // Use proposal, not proposals
+    //             j++;
+    //         }
+    //     }
+    //     return allProposals;
+    // }
