@@ -225,25 +225,33 @@ contract Timelock {
         bytes memory data,
         uint eta
     ) public payable returns (bytes memory) {
+                console.log("inn timelock");
+
         require(msg.sender == admin || msg.sender == samhitaAddress||  msg.sender == langDAOAddress , "Call must come from admin.");
         bytes32 txHash = keccak256(
             abi.encode(target, value, signature, data, eta)
         );
+        console.log("T1");
 
         require(queuedTransactions[txHash], "Transaction hasn't been queued.");
+                console.log("T2");
+
         require(
             getBlockTimestamp() >= eta,
             "Transaction hasn't surpassed timelock."
         );
+                console.log("T3");
+
         require(
             getBlockTimestamp() <= eta.add(GRACE_PERIOD),
             "Transaction is stale."
         );
-
+            console.log("T4");
         queuedTransactions[txHash] = false;
         bytes memory callData;
+        console.log("in timelock");
 
-        if (bytes(signature).length == 0) {
+        if(bytes(signature).length == 0) {
             callData = data;
         } else {
             callData = abi.encodePacked(
@@ -255,6 +263,8 @@ contract Timelock {
         (bool success, bytes memory returnData) = target.call{value: value}(
             callData
         );
+
+        console.log("at end of timelock");
         require(success, "transaction execution reverted.");
         emit ExecuteTransaction(txHash, target, value, signature, data, eta);
         return returnData;

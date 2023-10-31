@@ -21,6 +21,17 @@ describe("Language DAO", function () {
     voter5,
     admin;
 
+    const ProposalState = {
+    Pending: 0,
+    Active: 1,
+    Canceled: 2,
+    Defeated: 3,
+    Succeeded: 4,
+    Queued: 5,
+    Expired: 6,
+    Executed: 7,
+  };
+
   beforeEach(async function () {
     [admin, proposer, voter1, voter2, voter3, voter4, voter5] =
       await ethers.getSigners();
@@ -328,8 +339,6 @@ describe("Language DAO", function () {
     } catch (error) {
       console.error("An error occurred during voting:", error);
     }
-        const q = await langDAO.state(proposalId);
-        console.log("queue: ", q);
 
   //       const finall = await ethers.provider.getBalance(proposer.address);
   //       console.log("proposer eth balance after queued: ", finall);

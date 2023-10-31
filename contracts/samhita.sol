@@ -265,7 +265,9 @@ contract Samhita {
                 proposal.calldatas[i],
                 eta
             );
+
         }
+
         //record timestamp at which prop can be executed
         proposal.eta = eta;
 
@@ -276,11 +278,13 @@ contract Samhita {
                 abi.encodePacked(proposalsBasicData[_proposalId].category)
             ) == keccak256(abi.encodePacked("template"))
         ) {
+         
             templateNFT.mintTemplate(
                 proposals[_proposalId].creator,
                 proposalsBasicData[_proposalId].proposalFile,
                 _proposalId
             );
+            
         }
         emit ProposalQueued(_proposalId, eta);
     }
@@ -309,17 +313,23 @@ contract Samhita {
             state(_proposalId) == ProposalState.Queued,
             "proposal can only be executed if it is queued"
         );
+        console.log("in contr: ", _proposalId);
+
         Proposal storage proposal = proposals[_proposalId];
         proposal.executed = true;
 
         for (uint256 i = 0; i < proposal.targets.length; i++) {
+            console.log("in loop");
             timelock.executeTransaction{value: proposal.values[i]}(
                 proposal.targets[i],
                 proposal.values[i],
                 proposal.signatures[i],
-                proposal.calldatas[i]
+                proposal.calldatas[i], proposal.eta
+                
             );
         }
+
+        console.log("@ end");
         emit ProposalExecuted(_proposalId);
     }
 

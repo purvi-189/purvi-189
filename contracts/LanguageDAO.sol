@@ -225,7 +225,6 @@ contract LanguageDAO {
         latestProposalIds[msg.sender] = proposalCount;
         memberProposals[msg.sender] += 1;
 
-        ////
           // Calculate templateID
     uint256 templateID = proposalsBasicData[proposalCount].templateId;
 
@@ -314,7 +313,8 @@ contract LanguageDAO {
                 proposal.targets[i],
                 proposal.values[i],
                 proposal.signatures[i],
-                proposal.calldatas[i]
+                proposal.calldatas[i],
+                proposal.eta
             );
         }
         emit ProposalExecuted(proposalId);

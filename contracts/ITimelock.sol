@@ -32,7 +32,8 @@ interface ITimelock {
         address target,
         uint256 value,
         string calldata signature,
-        bytes calldata data
+        bytes calldata data,
+        uint256 eta
     ) external payable returns (bytes memory);
 
     function SetTempSender(address _address) external;

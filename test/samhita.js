@@ -677,8 +677,9 @@
 //     await token.writeCheckpoint(voter2.address, 0, 0, 21);
 //     await token.writeCheckpoint(voter3.address, 0, 0, 18);
 //     await token.writeCheckpoint(voter4.address, 0, 0, 15);
+//     console.log("hereee");
 
-//        //------------------ create a proposal---------------------------------
+//    /*    //------------------ create a proposal---------------------------------
 //     const stakeAmount = await samhita.proposalStake();
 //     // approve tokens
 //     await token.connect(proposer).approve(samhita.address, stakeAmount);
@@ -726,33 +727,33 @@
 //     await samhita.connect(voter3).castVote(proposalId, true);
 //     await samhita.connect(voter4).castVote(proposalId, false);
 //     const forVotes_ = (await samhita.proposalsBasicData(proposalId)).forVotes;
-//     console.log("For Votes: ", forVotes_);
-//     // 40 blocks
-//     for (let i = 0; i < 40; i++) {
-//       await ethers.provider.send("evm_mine");
-//     }
+//     console.log("For Votes: ", forVotes_);   */
+//     // // 40 blocks
+//     // for (let i = 0; i < 40; i++) {
+//     //   await ethers.provider.send("evm_mine");
+//     // }
 
-//     const p = await samhita.state(proposalId);
+//     // const p = await samhita.state(proposalId);
 
-//     const eta = proposal.eta.toNumber();
+//     // const eta = proposal.eta.toNumber();
 
 //     // Increase the current time to surpass the eta
 //     // await ethers.provider.send("evm_setNextBlockTimestamp", [eta + 1]); // Adding 1 second to ensure it's in the future
-//     await ethers.provider.send("evm_mine");
+//     // await ethers.provider.send("evm_mine");
 
-//     await expect(
-//       samhita.connect(proposer).cancel(proposalId)
-//     ).to.be.revertedWith("proposer above threshold");
+//     // await expect(
+//     //   samhita.connect(proposer).cancel(proposalId)
+//     // ).to.be.revertedWith("proposer above threshold");
 
-//     const ps1 = await samhita.state(proposalId);
-//     console.log(
-//       "As votes above threshold cant be canceled..so state is: " + ps1
-//     );
+//     // const ps1 = await samhita.state(proposalId);
+//     // console.log(
+//     //   "As votes above threshold cant be canceled..so state is: " + ps1
+//     // ); 
 
 //   });
 
 
-//   it("can be cancel if not executed", async function(){
+//  /* it("can be cancel if not executed", async function(){
 //     const propB = await ethers.provider.getBalance(proposer.address);
 //     console.log("proposer eth balance: ", propB);
 //     const tokenPrice = await token.getTokenPrice();
@@ -907,7 +908,7 @@
 //     catch(error) {
 //             console.error("An error occurred during voting:", error);
 //           }
-//   });
+//   });   */
 
 //   it("is defeated if required votes are not achieved", async function(){
 //     const propB = await ethers.provider.getBalance(proposer.address);
@@ -1120,8 +1121,6 @@
 //       propBalanceAfter
 //     );
     
-
-
 // // queue a proposal ------------------------------------------------------------------------------------
 
 //     const proposal = await samhita.proposals(1);
@@ -1163,10 +1162,10 @@
 //             await ethers.provider.send("evm_mine");
       
 //             //----------- Execute the proposal
-//             await samhita.connect(admin).execute(proposalId);
-//             // await tx.wait();
+//             await samhita.connect(admin).execute(1);
+//             await tx.wait();
       
-//             // console.log("Executed...!!");
+//             console.log("Executed...!!");
       
 //             // const ps1 = await samhita.state(proposalId);
 //             // console.log("State after executing: " + ps1);
